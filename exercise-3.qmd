@@ -126,6 +126,7 @@ d
 ```{r}
 p <- ggplot(data = d %>% filter(diet_strategy != "NA"), aes(x = diet_strategy, y = log(MeanGroupSize)))
 p <- p + geom_boxplot(na.rm = TRUE)
+p <- p + geom_jitter(aes(color = "black"), width = 0.2, size = 2, alpha = 0.7) 
 p <- p + theme(axis.text.x = element_text(angle = 90))
 p <- p + ylab("log(MeanGroupSize)")
 p
