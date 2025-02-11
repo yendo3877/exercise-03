@@ -15,16 +15,9 @@ names()
 
 ## Running Code
 
-```         
-d <- "data-wrangling.csv"
-```
-
-
 ```{r}
-d <- "data-wrangling.csv"
-d <- read.csv(d)
+d <- read.csv("https://raw.githubusercontent.com/yendo3877/exercise-03/refs/heads/main/data-wrangling.csv", header = TRUE)
 names(d)
-
 ```
 
 ## 1-3. Create variables
@@ -63,10 +56,7 @@ p <- p + theme(legend.position = "none")
 p
 ```
 
-Results: Yes. Species that spend more times moving travel farther overall.
-Among 14 families, Hylobatidae and Atilidae have positive correlation.
-Variables should be transformed to create well distributed population.
-
+Results: Yes. Species that spend more times moving travel farther overall. Among 14 families, Hylobatidae and Atilidae have positive correlation. Variables should be transformed to create well distributed population.
 
 #### 5. Relationship between day range length (y axis) and group size (x axis)
 
@@ -88,10 +78,7 @@ p <- p + theme(legend.position = "none")
 p
 ```
 
-Results:
-Yes. Species that live in larger groups travel farther overall.
-Positive correlation is observed in 7 families. The most significant one belongs to Cercopithecidae.
-Variables should be transformed to create well distributed population.
+Results: Yes. Species that live in larger groups travel farther overall. Positive correlation is observed in 7 families. The most significant one belongs to Cercopithecidae. Variables should be transformed to create well distributed population.
 
 ##### 6. Relationship between canine size dimorphism (y axis) and body size dimorphism (x axis)
 
@@ -123,6 +110,7 @@ d <- mutate(d, diet_strategy = paste(case_when(Fruit >= 50 ~ "frugivore", Leaves
                                      ))
 d
 ```
+
 ```{r}
 p <- ggplot(data = d %>% filter(diet_strategy != "NA"), aes(x = diet_strategy, y = log(MeanGroupSize)))
 p <- p + geom_boxplot(na.rm = TRUE)
@@ -131,6 +119,7 @@ p <- p + theme(axis.text.x = element_text(angle = 90))
 p <- p + ylab("log(MeanGroupSize)")
 p
 ```
+
 Results: No. Frugivore live in smaller groups than folivores.
 
 ## 8
@@ -146,4 +135,3 @@ d %>%
   print
             
 ```
-
